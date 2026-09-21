@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para o meu amor eterno — Heloíza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/foto-amor.png">
+<link rel="preload" as="image" href="images/foto-amor.jpg">
+<style>
+  :root{
+    --bg:#fff6f0;
+    --bg-soft:#ffeee2;
+    --ink:#2b1830;
+    --ink-soft:#7a637f;
+    --rose:#e34d6a;
+    --gold:#c9862a;
+    --plum:#7c4a8e;
+    --card:#ffffff;
+    --line:rgba(43,24,48,.14);
+    --shadow:0 18px 40px -18px rgba(43,24,48,.35);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#140e22;
+      --bg-soft:#1c1530;
+      --ink:#f5ecf8;
+      --ink-soft:#c3aecf;
+      --rose:#ff7c96;
+      --gold:#f4c568;
+      --plum:#c298db;
+      --card:#211a35;
+      --line:rgba(255,255,255,.14);
+      --shadow:0 18px 44px -16px rgba(0,0,0,.6);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#140e22;
+    --bg-soft:#1c1530;
+    --ink:#f5ecf8;
+    --ink-soft:#c3aecf;
+    --rose:#ff7c96;
+    --gold:#f4c568;
+    --plum:#c298db;
+    --card:#211a35;
+    --line:rgba(255,255,255,.14);
+    --shadow:0 18px 44px -16px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    padding-inline:20px;
+    overflow-x:hidden;
+    transition:opacity .45s ease;
+  }
+  body.leaving{opacity:0;}
+  h1,h2,.display{
+    font-family:"Fraunces","Iowan Old Style",serif;
+    font-weight:600;
+    text-wrap:balance;
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--rose);color:#fff;}
+
+  .wrap{max-width:760px;margin-inline:auto;position:relative;height:100%;}
+
+  #sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+  /* ---------- HERO ---------- */
+  #hero{
+    position:relative;
+    z-index:1;
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:18px;
+    padding-block:48px 32px;
+  }
+  .hero-script{
+    font-family:"Caveat",cursive;
+    font-weight:700;
+    font-size:clamp(2.4rem,10vw,3.6rem);
+    color:var(--rose);
+    line-height:1.05;
+  }
+  .hero-names{
+    font-size:clamp(2rem,8vw,3.4rem);
+    line-height:1.05;
+    display:flex;
+    align-items:center;
+    gap:.35em;
+    flex-wrap:wrap;
+    justify-content:center;
+    color:var(--ink-soft);
+    opacity:.9;
+  }
+  .hero-names .amp{
+    font-style:italic;
+    color:var(--rose);
+    font-size:.8em;
+  }
+  .enter-btn{
+    margin-top:30px;
+    position:relative;
+    width:82px;height:82px;
+    border-radius:50%;
+    border:none;
+    background:linear-gradient(150deg, var(--rose), var(--plum));
+    box-shadow:0 16px 32px -12px color-mix(in srgb, var(--rose) 65%, transparent), var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    animation:enter-bounce 2.6s ease-in-out infinite;
+  }
+  .enter-orbit{
+    position:absolute;
+    inset:-13px;
+    border-radius:50%;
+    border:1.5px dashed color-mix(in srgb, var(--gold) 65%, transparent);
+    animation:enter-spin 9s linear infinite;
+  }
+  .enter-pulse{
+    position:absolute;
+    inset:-8px;
+    border-radius:50%;
+    border:1.5px solid var(--rose);
+    opacity:.55;
+    animation:enter-ring 2.2s ease-out infinite;
+  }
+  .enter-pulse.p2{animation-delay:1.1s;}
+  @keyframes enter-ring{
+    0%{transform:scale(.85);opacity:.6;}
+    100%{transform:scale(1.35);opacity:0;}
+  }
+  @keyframes enter-spin{ to{transform:rotate(360deg);} }
+  @keyframes enter-bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(7px);}
+  }
+  .enter-icon{
+    font-size:1.6rem;
+    color:#fff;
+    animation:enter-beat 1.6s ease-in-out infinite;
+  }
+  @keyframes enter-beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.16);}
+  }
+  .enter-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 22px 45px -8px color-mix(in srgb, var(--rose) 80%, transparent), 0 0 32px -4px var(--rose);
+  }
+  .enter-btn:hover .enter-orbit{
+    animation-duration:4.5s;
+    border-color:var(--gold);
+  }
+  .enter-btn.clicked{
+    animation:enter-click-burst .9s cubic-bezier(.22,1,.36,1) forwards !important;
+    pointer-events:none;
+  }
+  .enter-btn.clicked .enter-icon{
+    animation:icon-explode .85s cubic-bezier(.22,1,.36,1) forwards !important;
+  }
+  .enter-btn.clicked .enter-orbit,
+  .enter-btn.clicked .enter-pulse{
+    opacity:0 !important;
+    transition:opacity .2s ease;
+  }
+  @keyframes enter-click-burst{
+    0%{ transform:scale(1); }
+    18%{ transform:scale(0.82) rotate(-6deg); }
+    40%{ transform:scale(1.35) rotate(6deg); box-shadow:0 0 70px var(--rose), 0 0 120px var(--gold); }
+    70%{ transform:scale(1.2) rotate(0); }
+    100%{ transform:scale(2.8); opacity:0; }
+  }
+  @keyframes icon-explode{
+    0%{ transform:scale(1); }
+    30%{ transform:scale(2); filter:drop-shadow(0 0 20px #fff) drop-shadow(0 0 35px var(--rose)); }
+    100%{ transform:scale(4.5); opacity:0; filter:drop-shadow(0 0 50px var(--gold)); }
+  }
+
+  /* Expanding shockwaves */
+  .shockwave-ring{
+    position:fixed;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:90;
+    transform:translate(-50%, -50%) scale(0.1);
+    opacity:1;
+  }
+  .shockwave-ring.r1{
+    border:3px solid var(--rose);
+    box-shadow:0 0 30px var(--rose);
+    animation:shockwave-anim .85s cubic-bezier(.1,.8,.3,1) forwards;
+  }
+  .shockwave-ring.r2{
+    border:2.5px solid var(--gold);
+    box-shadow:0 0 24px var(--gold);
+    animation:shockwave-anim .95s cubic-bezier(.1,.8,.3,1) .08s forwards;
+  }
+  .shockwave-ring.r3{
+    border:2px solid var(--plum);
+    box-shadow:0 0 36px var(--plum);
+    animation:shockwave-anim 1.05s cubic-bezier(.1,.8,.3,1) .16s forwards;
+  }
+  @keyframes shockwave-anim{
+    0%{ transform:translate(-50%, -50%) scale(0.2); opacity:1; }
+    100%{ transform:translate(-50%, -50%) scale(4.2); opacity:0; }
+  }
+
+  /* Photo reveal modal */
+  .photo-modal-overlay{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100vh !important;
+    height:100dvh !important;
+    z-index:999999 !important;
+    pointer-events:none;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:20px 16px !important;
+    opacity:0;
+    visibility:hidden;
+    background:radial-gradient(circle at center, rgba(30, 14, 38, 0.95) 0%, rgba(12, 8, 18, 0.98) 100%) !important;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    transition:opacity .45s cubic-bezier(.16,1,.3,1), visibility .45s ease;
+  }
+  .photo-modal-overlay.active{
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    cursor:pointer !important;
+  }
+  .photo-modal-overlay.fading-out{
+    opacity:0 !important;
+    transform:scale(1.04) !important;
+    transition:opacity .45s ease, transform .45s ease !important;
+  }
+  .photo-modal-card{
+    position:relative !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    max-width:92vw !important;
+    max-height:92vh !important;
+    max-height:92dvh !important;
+    transform:scale(0.8) translateY(24px);
+    opacity:0;
+    transition:transform .6s cubic-bezier(.175,.885,.32,1.275), opacity .45s ease;
+  }
+  .photo-modal-overlay.active .photo-modal-card{
+    transform:scale(1) translateY(0) !important;
+    opacity:1 !important;
+  }
+
+  .photo-modal-frame{
+    position:relative !important;
+    padding:7px !important;
+    border-radius:24px !important;
+    background:linear-gradient(135deg, rgba(255,124,150,.85), rgba(244,197,104,.75) 48%, rgba(194,152,219,.85)) !important;
+    box-shadow:0 24px 70px -10px rgba(0,0,0,.85), 0 0 45px -5px rgba(255,124,150,.5), inset 0 0 16px rgba(255,255,255,.45) !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+  .photo-modal-img{
+    display:block !important;
+    max-width:min(84vw, 320px) !important;
+    max-height:min(56vh, 440px) !important;
+    width:auto !important;
+    height:auto !important;
+    object-fit:cover !important;
+    border-radius:18px !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.4) !important;
+    animation:photo-breathe 4s ease-in-out infinite alternate !important;
+  }
+  @keyframes photo-breathe{
+    0%{ transform:scale(1); }
+    100%{ transform:scale(1.025); }
+  }
+
+  .photo-modal-footer{
+    margin-top:14px !important;
+    text-align:center !important;
+    width:100% !important;
+    position:relative !important;
+    z-index:5 !important;
+  }
+  .photo-modal-love{
+    margin:0 !important;
+    font-family:"Caveat", cursive !important;
+    font-weight:700 !important;
+    font-size:clamp(2.1rem, 7.8vw, 3.5rem) !important;
+    letter-spacing:.04em !important;
+    color:#ffffff !important;
+    text-shadow:
+      0 0 16px rgba(255,124,150,.95),
+      0 0 35px var(--rose),
+      0 0 60px rgba(194,152,219,.75),
+      0 4px 14px rgba(0,0,0,.7) !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:.22em !important;
+    animation:love-text-pulse 1.5s ease-in-out infinite alternate !important;
+  }
+  .photo-modal-heart{
+    display:inline-block !important;
+    font-size:1.15em !important;
+    filter:drop-shadow(0 0 18px #ff4d6d) !important;
+    animation:modal-heart-beat .85s ease-in-out infinite !important;
+  }
+  @keyframes modal-heart-beat{
+    0%, 100%{ transform:scale(1); }
+    30%{ transform:scale(1.35) rotate(-8deg); }
+    50%{ transform:scale(1.18) rotate(4deg); }
+  }
+  @keyframes love-text-pulse{
+    0%{ transform:scale(1); filter:brightness(1); }
+    100%{ transform:scale(1.03); filter:brightness(1.2); }
+  }
+
+  #burstCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:180;
+    pointer-events:none;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .enter-btn, .enter-pulse, .enter-icon, .enter-orbit{animation:none;}
+    body{transition:none;}
+  }
+
+  .heart-burst{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:50;
+    overflow:hidden;
+  }
+
+  /* ---------- tap-anywhere love words ---------- */
+  #loveWords{
+    position:fixed;
+    inset:0;
+    z-index:40;
+    pointer-events:none;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:.15em .35em;
+    padding:10vh 8vw;
+    text-align:center;
+  }
+  .lw-word{
+    opacity:0;
+    transform:scale(.3) rotate(0deg);
+    display:inline-block;
+    text-shadow:0 6px 24px rgba(0,0,0,.18);
+  }
+  .lw-word.show{animation:lw-pop .6s cubic-bezier(.2,1.4,.4,1) forwards;}
+  .lw-1{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(2.6rem,15vw,5rem);
+    color:var(--rose);
+    --end-rot:-7deg;
+  }
+  .lw-2{
+    font-family:"Caveat",cursive;
+    font-weight:700;
+    font-size:clamp(3rem,17vw,5.6rem);
+    color:var(--gold);
+    --end-rot:5deg;
+    margin-top:.06em;
+  }
+  .lw-3{
+    font-family:"Fraunces",serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(3.2rem,19vw,6.4rem);
+    color:var(--plum);
+    --end-rot:-3deg;
+  }
+  @keyframes lw-pop{
+    0%{opacity:0;transform:scale(.3) rotate(0deg);}
+    60%{opacity:1;transform:scale(1.12) rotate(var(--end-rot));}
+    100%{opacity:1;transform:scale(1) rotate(var(--end-rot));}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .lw-word.show{animation:none;opacity:1;transform:rotate(var(--end-rot));}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="sky"></canvas>
+<canvas id="burstCanvas"></canvas>
+
+<div class="photo-modal-overlay" id="photoModal" aria-hidden="true">
+  <div class="photo-modal-card">
+    <div class="photo-modal-frame">
+      <img src="images/foto-amor.png" alt="Luis Felipe e Heloíza" class="photo-modal-img" onerror="if(this.src.indexOf('foto-amor.jpg')===-1)this.src='images/foto-amor.jpg';">
+    </div>
+    <div class="photo-modal-footer">
+      <p class="photo-modal-love">EU TE AMO <span class="photo-modal-heart">❤️</span></p>
+    </div>
+  </div>
+</div>
+
+<div id="loveWords" aria-hidden="true">
+  <span class="lw-word lw-1">EU</span>
+  <span class="lw-word lw-2">TE</span>
+  <span class="lw-word lw-3">AMO</span>
+</div>
+
+<div class="wrap">
+  <header id="hero">
+    <p class="hero-script">Para o meu amor eterno</p>
+    <h1 class="hero-names">Heloíza</h1>
+    <a class="enter-btn" id="enterBtn" href="carta.html" aria-label="Ir para a nossa história">
+      <span class="enter-orbit"></span>
+      <span class="enter-pulse"></span>
+      <span class="enter-pulse p2"></span>
+      <span class="enter-icon">❤</span>
+    </a>
+  </header>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- ambient moving-hearts background ---------- */
+  (function sky(){
+    var canvas = document.getElementById("sky");
+    if(!canvas) return;
+    var ctx = canvas.getContext("2d");
+    var hearts = [];
+    var w, h, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var lastT = null;
+
+    function resize(){
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + "px"; canvas.style.height = h + "px";
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      var count = Math.max(16, Math.round((w * h) / 26000));
+      hearts = [];
+      for(var i=0;i<count;i++){
+        hearts.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          size: Math.random()*13 + 9,
+          speed: Math.random()*9 + 5,
+          swayAmp: Math.random()*16 + 5,
+          swayFreq: Math.random()*0.5 + 0.25,
+          phase: Math.random()*Math.PI*2,
+          op: Math.random()*0.3 + 0.12,
+          gold: Math.random() < 0.28
+        });
+      }
+    }
+
+    function heartColor(gold){
+      return getComputedStyle(document.body).getPropertyValue(gold ? "--gold" : "--rose").trim() || (gold ? "#f4c568" : "#e34d6a");
+    }
+
+    function draw(t){
+      if(lastT === null) lastT = t;
+      var dt = Math.min((t - lastT) / 1000, 0.05);
+      lastT = t;
+      ctx.clearRect(0,0,w,h);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      var roseCol = heartColor(false), goldCol = heartColor(true);
+      for(var i=0;i<hearts.length;i++){
+        var p = hearts[i];
+        if(!reduceMotion){
+          p.y -= p.speed * dt;
+          if(p.y < -24){ p.y = h + 24; p.x = Math.random()*w; }
+        }
+        var sway = reduceMotion ? 0 : Math.sin(t/1000*p.swayFreq + p.phase) * p.swayAmp;
+        ctx.globalAlpha = p.op;
+        ctx.font = p.size + "px sans-serif";
+        ctx.fillStyle = p.gold ? goldCol : roseCol;
+        ctx.fillText("♥", p.x + sway, p.y);
+      }
+      ctx.globalAlpha = 1;
+      if(!reduceMotion) requestAnimationFrame(draw);
+    }
+
+    resize();
+    window.addEventListener("resize", debounce(resize, 200));
+    requestAnimationFrame(draw);
+    if(reduceMotion) draw(0);
+  })();
+
+  function debounce(fn, ms){
+    var t;
+    return function(){
+      clearTimeout(t);
+      var args = arguments;
+      t = setTimeout(function(){ fn.apply(null,args); }, ms);
+    };
+  }
+
+  /* ---------- enter button: magical burst & photo reveal with EU TE AMO ---------- */
+  var enterBtn = document.getElementById("enterBtn");
+  var photoModal = document.getElementById("photoModal");
+  var burstCanvas = document.getElementById("burstCanvas");
+  var isTransitioning = false;
+
+  function launchParticleBurst(cx, cy){
+    if(!burstCanvas) return;
+    var ctx = burstCanvas.getContext("2d");
+    var w = window.innerWidth, h = window.innerHeight;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    burstCanvas.width = w * dpr;
+    burstCanvas.height = h * dpr;
+    burstCanvas.style.width = w + "px";
+    burstCanvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var particles = [];
+    var count = 70;
+    var symbols = ["♥", "❤", "✨", "✦", "★", "💖"];
+    var colors = ["#ff7c96", "#f4c568", "#c298db", "#ffffff", "#ff4d6d", "#ffc2d1"];
+
+    for(var i = 0; i < count; i++){
+      var angle = Math.random() * Math.PI * 2;
+      var speed = 4 + Math.random() * 15;
+      var isSymbol = Math.random() < 0.65;
+      particles.push({
+        x: cx,
+        y: cy,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - (Math.random() * 2),
+        drag: 0.93 + Math.random() * 0.03,
+        gravity: 0.08 + Math.random() * 0.08,
+        size: isSymbol ? (14 + Math.random() * 18) : (3 + Math.random() * 5),
+        alpha: 1,
+        fade: 0.012 + Math.random() * 0.018,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.25,
+        symbol: isSymbol ? symbols[Math.floor(Math.random() * symbols.length)] : null,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+
+    var startTime = performance.now();
+    function animateParticles(now){
+      ctx.clearRect(0, 0, w, h);
+      var alive = false;
+      for(var i = 0; i < particles.length; i++){
+        var p = particles[i];
+        if(p.alpha <= 0) continue;
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vx *= p.drag;
+        p.vy = (p.vy * p.drag) + p.gravity;
+        p.rot += p.rotSpeed;
+        p.alpha = Math.max(0, p.alpha - p.fade);
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+
+        if(p.symbol){
+          ctx.font = "bold " + p.size + "px 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 10;
+          ctx.fillText(p.symbol, 0, 0);
+        } else {
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 12;
+          ctx.beginPath();
+          ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+      if(alive && (now - startTime < 1600)){
+        requestAnimationFrame(animateParticles);
+      } else {
+        ctx.clearRect(0, 0, w, h);
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+
+  function spawnShockwaves(cx, cy){
+    ["r1", "r2", "r3"].forEach(function(cls){
+      var ring = document.createElement("div");
+      ring.className = "shockwave-ring " + cls;
+      ring.style.left = cx + "px";
+      ring.style.top = cy + "px";
+      ring.style.width = "180px";
+      ring.style.height = "180px";
+      document.body.appendChild(ring);
+      setTimeout(function(){ ring.remove(); }, 1200);
+    });
+  }
+
+  if(enterBtn){
+    enterBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      if(isTransitioning) return;
+      isTransitioning = true;
+
+      var targetHref = enterBtn.getAttribute("href") || "carta.html";
+
+      // 1. Instantly display Photo Modal with EU TE AMO
+      if(photoModal){
+        photoModal.classList.add("active");
+        photoModal.style.visibility = "visible";
+        photoModal.style.opacity = "1";
+        photoModal.style.pointerEvents = "auto";
+      }
+
+      // 2. Play subtle visual effects safely
+      try {
+        enterBtn.classList.add("clicked");
+      } catch(err){}
+
+      try {
+        var rect = enterBtn.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        spawnShockwaves(cx, cy);
+        launchParticleBurst(cx, cy);
+      } catch(err){}
+
+      // 3. Navigation to carta.html after 3.2 seconds
+      var navigated = false;
+      function goToCarta(){
+        if(navigated) return;
+        navigated = true;
+        if(photoModal){
+          photoModal.classList.add("fading-out");
+          photoModal.style.opacity = "0";
+        }
+        setTimeout(function(){
+          window.location.href = targetHref;
+        }, 400);
+      }
+
+      // Tap on modal to advance immediately if desired
+      if(photoModal){
+        photoModal.addEventListener("click", goToCarta);
+      }
+
+      // Automatically advance after 3.2 seconds
+      setTimeout(goToCarta, 3200);
+    });
+  }
+
+  /* ---------- tap anywhere: EU TE AMO ---------- */
+  (function loveWords(){
+    var overlay = document.getElementById("loveWords");
+    if(!overlay) return;
+    var words = overlay.querySelectorAll(".lw-word");
+    var step = 0;
+    var interactiveSel = 'a, button, [role="button"], input, textarea, select';
+    document.addEventListener("click", function(e){
+      if(e.target.closest(interactiveSel)) return;
+      if(step >= 3){
+        words.forEach(function(w){ w.classList.remove("show"); });
+        step = 0;
+        return;
+      }
+      words[step].classList.add("show");
+      if(!reduceMotion) heartBurst({count:5, x:e.clientX, y:e.clientY});
+      step++;
+      if(step === 3 && !reduceMotion){
+        setTimeout(function(){ heartBurst({count:16}); }, 200);
+      }
+    });
+  })();
+
+  function heartBurst(opts){
+    opts = opts || {};
+    var n = opts.count || 22;
+    var layer = document.createElement("div");
+    layer.className = "heart-burst";
+    document.body.appendChild(layer);
+    var originX = 50, originTopPx = null;
+    if(opts.originEl){
+      var r = opts.originEl.getBoundingClientRect();
+      originX = ((r.left + r.width/2) / window.innerWidth) * 100;
+      originTopPx = r.top + r.height*0.25;
+    } else if(typeof opts.x === "number"){
+      originX = (opts.x / window.innerWidth) * 100;
+      originTopPx = opts.y;
+    }
+    for(var i=0;i<n;i++){
+      var h = document.createElement("div");
+      h.textContent = Math.random() > 0.5 ? "💛" : "❤️";
+      var startX = originX + (Math.random()*30-15);
+      var drift = (Math.random()*40-20);
+      var dur = 2.2 + Math.random()*1.3;
+      var delay = Math.random()*0.4;
+      var size = 13 + Math.random()*15;
+      var css = "position:absolute;left:"+startX+"%;font-size:"+size+"px;"+
+        "opacity:0;transform:translateX(0);"+
+        "animation:heartUp "+dur+"s ease-in "+delay+"s forwards;";
+      css += originTopPx !== null ? ("top:"+originTopPx+"px;") : "bottom:-40px;";
+      h.style.cssText = css;
+      h.style.setProperty("--drift", drift + "px");
+      layer.appendChild(h);
+    }
+    setTimeout(function(){ layer.remove(); }, 4500);
+  }
+
+  var styleTag = document.createElement("style");
+  styleTag.textContent = "@keyframes heartUp{"+
+    "0%{opacity:0;transform:translateY(0) translateX(0) rotate(0deg);}"+
+    "12%{opacity:1;}"+
+    "100%{opacity:0;transform:translateY(-100vh) translateX(var(--drift)) rotate(25deg);}"+
+    "}";
+  document.head.appendChild(styleTag);
+
+})();
+</script>
+</body>
+</html>
